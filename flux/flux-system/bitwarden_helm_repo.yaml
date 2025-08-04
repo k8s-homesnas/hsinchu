@@ -1,0 +1,19 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: vaultwarden_helm_repo
+  namespace: flux-system
+spec:
+  interval: 1m
+  url: https://github.com/guerzon/vaultwarden
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: vaultwarden_release
+  namespace: flux-system
+spec:
+  interval: 1m
+  url: https://github.com/k8s-homesnas/vaultwarden
+  ref:
+    branch: main
