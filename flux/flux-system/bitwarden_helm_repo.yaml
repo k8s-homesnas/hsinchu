@@ -15,7 +15,7 @@ metadata:
 spec:
   interval: 1m
   url: https://github.com/k8s-homesnas/vaultwarden.git
-  secreteRef:
+  secretRef:
     name: my-git-auth
   ref:
     branch: main
