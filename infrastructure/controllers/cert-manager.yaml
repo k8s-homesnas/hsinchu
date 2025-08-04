@@ -21,7 +21,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: jetstack
-      version: "v1.12.x" # 指定一個穩定的版本
+      version: "v1.18.2" # 指定一個穩定的版本
   install:
     createNamespace: true
   values:
