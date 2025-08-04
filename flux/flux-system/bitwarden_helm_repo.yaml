@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1m
-  url: https://github.com/guerzon/vaultwarden/charts/vaultwarden/
+  url: https://guerzon.github.io/vaultwarden
 ---
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
@@ -15,5 +15,7 @@ metadata:
 spec:
   interval: 1m
   url: https://github.com/k8s-homesnas/vaultwarden
+  secreteRef:
+    name: my-git-auth
   ref:
     branch: main
