@@ -1,0 +1,43 @@
+# infrastructure/controllers/external-dns.yaml
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: external-dns
+  namespace: flux-system
+spec:
+  interval: 24h
+  url: https://kubernetes-sigs.github.io/external-dns/
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: external-dns
+  namespace: external-dns
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: external-dns
+      sourceRef:
+        kind: HelmRepository
+        name: external-dns
+      version: "v0.18.0" # 指定一個穩定的版本
+  install:
+    createNamespace: true
+  values:
+    provider: cloudflare
+    # 使用與 cert-manager 相同的 secret
+    extraEnv:
+      - name: CF_API_TOKEN
+        valueFrom:
+          secretKeyRef:
+            name: cloudflare-api-token # 需要將該 secret 複製或掛載到 external-dns namespace
+            key: api-token
+      - name: CF_API_EMAIL
+        valueFrom:
+          secretKeyRef:
+            name: cloudflare-apt-token
+            key: email
+    # 限制 ExternalDNS 只管理特定網域的紀錄，避免誤操作
+    domainFilters: [ 'homesnas.com' ]
+    policy: sync # 'sync' 會同時建立與刪除紀錄, 'upsert-only' 只會建立與更新
