@@ -1,7 +1,7 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
-  name: vaultwarden_helm_repo
+  name: vaultwarden-helm-repo
   namespace: flux-system
 spec:
   interval: 1m
@@ -10,7 +10,7 @@ spec:
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
 metadata:
-  name: vaultwarden_release
+  name: vaultwarden-release
   namespace: flux-system
 spec:
   interval: 1m
