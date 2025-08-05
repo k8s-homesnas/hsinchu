@@ -21,7 +21,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: ingress-nginx
-      version: "1.13.0" # 指定一個穩定的版本
+      # version: "1.13.0" # 指定一個穩定的版本
   values:
     controller:
       service:
