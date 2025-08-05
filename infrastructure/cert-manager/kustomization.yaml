@@ -5,5 +5,5 @@ metadata:
   name: cert-manager
 resources:
   - namespace.yaml
-  - cluster-issuer.yaml
   - cert-manager.yaml
+  - cluster-issuer.yaml
