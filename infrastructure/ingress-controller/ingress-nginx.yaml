@@ -21,7 +21,6 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: ingress-nginx
-        namespace: flux-system
       version: "v1.13.0" # 指定一個穩定的版本
   values:
     controller:
