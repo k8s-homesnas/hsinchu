@@ -4,3 +4,4 @@ resources:
 - gotk-components.yaml
 - gotk-sync.yaml
 - bitwarden_helm_repo.yaml
+- infrastructure.yaml

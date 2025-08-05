@@ -6,15 +6,12 @@ metadata:
 spec:
   acme:
     server: https://acme-v02.api.letsencrypt.org/directory
-    email: your-email@yourdomain.com # 換成您的 email
+    email: im43089@gmail.com # 換成您的 email
     privateKeySecretRef:
       name: letsencrypt-private-key
     solvers:
       - dns01:
           cloudflare:
-            # email: im43089@gmail.com # 您的 Cloudflare 帳號 email
             apiTokenSecretRef:
               - name: cloudflare-api-token # 引用步驟 1 建立的 Secret
                 key: api-token
-              - name: email
-                key: email

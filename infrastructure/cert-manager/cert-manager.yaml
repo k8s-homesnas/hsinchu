@@ -21,9 +21,8 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: jetstack
+        namespace: flux-system
       version: "v1.18.2" # 指定一個穩定的版本
-  install:
-    createNamespace: true
   values:
     installCRDs: true # 非常重要！cert-manager 需要安裝自己的 CRDs
     extraArgs:
