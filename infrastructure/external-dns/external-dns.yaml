@@ -20,7 +20,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: external-dns
-      version: "v0.18.0" # 指定一個穩定的版本
+      # version: "v0.18.0" # 指定一個穩定的版本
   install:
     createNamespace: true
   values:
