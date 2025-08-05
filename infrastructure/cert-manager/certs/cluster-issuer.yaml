@@ -13,5 +13,5 @@ spec:
       - dns01:
           cloudflare:
             apiTokenSecretRef:
-              - name: cloudflare-api-token # 引用步驟 1 建立的 Secret
-                key: api-token
+              name: cloudflare-api-token # 引用步驟 1 建立的 Secret
+              key: api-token
