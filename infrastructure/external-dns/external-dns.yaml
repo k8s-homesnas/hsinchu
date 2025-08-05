@@ -26,7 +26,7 @@ spec:
   values:
     provider: cloudflare
     # 使用與 cert-manager 相同的 secret
-    extraEnv:
+    env:
       - name: CF_API_TOKEN
         valueFrom:
           secretKeyRef:
