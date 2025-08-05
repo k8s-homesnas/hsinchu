@@ -1,7 +1,7 @@
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
+apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: infrastructure
+  name: cert-manager
   namespace: flux-system
 spec:
   interval: 10m0s
@@ -12,10 +12,10 @@ spec:
   prune: true
   validation: client
 ---
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
+apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: infrastructure
+  name: external-dns
   namespace: flux-system
 spec:
   interval: 10m0s
@@ -26,10 +26,10 @@ spec:
   prune: true
   validation: client
 ---
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
+apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: infrastructure
+  name: ingress-controller
   namespace: flux-system
 spec:
   interval: 10m0s
