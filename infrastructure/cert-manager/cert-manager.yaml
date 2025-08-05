@@ -13,6 +13,7 @@ kind: HelmRelease
 metadata:
   name: cert-manager
   namespace: cert-manager
+  namespace: flux-system
 spec:
   interval: 5m
   chart:
