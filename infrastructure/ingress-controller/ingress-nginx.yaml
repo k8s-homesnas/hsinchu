@@ -24,6 +24,8 @@ spec:
       # version: "1.13.0" # 指定一個穩定的版本
   values:
     controller:
+      config:
+        annotations-risk-level: Critical
       admissionWebhooks:
         certManager:
           enabled: true
