@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1m
-  url: https://guerzon.github.io/vaultwarden
+  url: https://gissilabs.github.io/charts/
 ---
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
