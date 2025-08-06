@@ -24,6 +24,10 @@ spec:
       # version: "1.13.0" # 指定一個穩定的版本
   values:
     controller:
+      admissionWebhooks:
+        certManager:
+          enabled: true
+      allowSnippetAnnotations: true
       service:
         annotations:
           # 若您在雲端平台上，可能需要此 annotation 來取得 Public IP
