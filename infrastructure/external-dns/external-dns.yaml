@@ -35,7 +35,7 @@ spec:
       - name: CF_API_EMAIL
         valueFrom:
           secretKeyRef:
-            name: cloudflare-apt-token
+            name: cloudflare-api-token
             key: email
     # 限制 ExternalDNS 只管理特定網域的紀錄，避免誤操作
     domainFilters: [ 'homesnas.com' ]
