@@ -1,0 +1,35 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: minecraft-helm-repo
+  namespace: flux-system
+spec:
+  interval: 24h
+  url: https://itzg.github.io/minecraft-server-charts/
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: minecraft
+  namespace: flux-system
+spec:
+  interval: 10m
+  url: https://github.com/k8s-homesnas/minecraft.git
+  secretRef:
+    name: flux-system
+  ref:
+    branch: main
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: minecraft-kustomize
+  namespace: flux-system
+spec:
+  interval: 10m
+  path: ./
+  prune: true
+  force: false
+  sourceRef:
+    kind: GitRepository
+    name: minecraft
