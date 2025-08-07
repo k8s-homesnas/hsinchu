@@ -24,6 +24,9 @@ spec:
   install:
     createNamespace: true
   values:
+    source:
+      - service
+      - ingress
     provider: cloudflare
     # 使用與 cert-manager 相同的 secret
     env:
