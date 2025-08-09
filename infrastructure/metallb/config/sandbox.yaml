@@ -4,15 +4,7 @@ metadata:
   name: sandbox
 spec:
   addresses:
-  - fe80::/64
+  - fe80::abcd:abcd/96
   - 192.168.1.200-192.168.1.220
   namespaces:
     - ingress-nginx
----
-apiVersion: metallb.io/v1beta2
-kind: L2Advertisement
-metadata:
-  name: local-ip
-spec:
-  ipAddressPools:
-  - sandbox

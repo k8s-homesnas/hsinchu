@@ -1,0 +1,7 @@
+apiVersion: metallb.io/v1beta2
+kind: L2Advertisement
+metadata:
+  name: local-ip
+spec:
+  ipAddressPools:
+  - sandbox
