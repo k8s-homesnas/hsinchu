@@ -31,7 +31,7 @@ spec:
           enabled: true
       allowSnippetAnnotations: true
       service:
-        type: NodePort
+        # type: NodePort
         annotations:
           # 若您在雲端平台上，可能需要此 annotation 來取得 Public IP
           # service.beta.kubernetes.io/azure-load-balancer-health-probe-request-path: "/healthz"
