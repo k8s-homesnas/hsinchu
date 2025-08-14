@@ -4,4 +4,8 @@ metadata:
   name: local-ip
 spec:
   ipAddressPools:
-  - sandbox
+    - sandbox
+  interfaces:
+    - eth0    # obi
+    - br0     # hsinchu
+    - enp5s0  # 13700k
