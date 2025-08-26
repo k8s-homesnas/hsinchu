@@ -6,6 +6,5 @@ metadata:
 resources:
   - namespace.yaml
   - HelmRepo.yaml
-  - external-dns.yaml
   - cloudflare.yaml
   - local-bind.yaml
