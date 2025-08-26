@@ -1,12 +1,3 @@
-# infrastructure/controllers/external-dns.yaml
-apiVersion: source.toolkit.fluxcd.io/v1beta2
-kind: HelmRepository
-metadata:
-  name: external-dns
-spec:
-  interval: 24h
-  url: https://kubernetes-sigs.github.io/external-dns/
----
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:

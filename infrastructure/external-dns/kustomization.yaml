@@ -5,4 +5,7 @@ metadata:
   name: external-dns
 resources:
   - namespace.yaml
+  - HelmRepo.yaml
   - external-dns.yaml
+  - cloudflare.yaml
+  - local-bind.yaml
