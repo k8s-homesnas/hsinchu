@@ -19,7 +19,7 @@ spec:
     provider: rfc2136
     # 使用與 cert-manager 相同的 secret
     extraArgs:
-      - --rfc2136-host="192.168.1.111"
+      - --rfc2136-host=192.168.1.111
       - --rfc2136-port=53
       - --rfc2136-zone=hsinchu.pro
       - --rfc2136-tsig-secret-alg=hmac-sha256
