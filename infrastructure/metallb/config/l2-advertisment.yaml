@@ -5,7 +5,3 @@ metadata:
 spec:
   ipAddressPools:
     - sandbox
-  # interfaces:
-  #   - eth0    # obi
-  #   - br0     # hsinchu
-  #   - enp5s0  # 13700k
