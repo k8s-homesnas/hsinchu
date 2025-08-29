@@ -21,6 +21,8 @@ spec:
     provider: cloudflare
     cloudflare:
       proxied: true
+    extraArgs:
+      - --cloudflare-proxied
     # 使用與 cert-manager 相同的 secret
     env:
       - name: CF_API_TOKEN
