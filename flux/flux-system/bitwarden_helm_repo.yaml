@@ -16,7 +16,7 @@ spec:
   interval: 1m
   url: https://github.com/k8s-homesnas/vaultwarden.git
   secretRef:
-    name: my-git-auth
+    name: flux-system
   ref:
     branch: main
 ---
