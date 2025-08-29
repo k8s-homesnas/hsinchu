@@ -19,6 +19,8 @@ spec:
       - service
       - ingress
     provider: cloudflare
+    cloudflare:
+      proxied: true
     # 使用與 cert-manager 相同的 secret
     env:
       - name: CF_API_TOKEN
