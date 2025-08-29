@@ -4,4 +4,5 @@ metadata:
   name: sandbox
 spec:
   addresses:
+  - 2001:b011:700e:164d::/64
   - 192.168.1.200-192.168.1.254
