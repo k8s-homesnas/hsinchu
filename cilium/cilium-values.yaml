@@ -22,6 +22,9 @@ ipam:
 l2announcements:
   enabled: true
 
+devices: 
+  - br0
+  - enp+
 # 由於我們沒有 kube-proxy，Cilium 需要知道 API Server 的位置來進行服務發現
 # 如果您的 API Server 是透過負載平衡器存取，請填寫負載平衡器的位址
 k8sServiceHost: "192.168.1.111" # 替換成您主節點的 IP 或 VIP

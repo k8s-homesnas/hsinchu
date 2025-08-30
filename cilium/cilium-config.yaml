@@ -6,8 +6,13 @@ metadata:
 spec:
   # 這個選擇器會選擇服務，Cilium 會自動處理服務上的 IPv4 和 IPv6 位址
   nodeSelector:
-    matchLabels:
-      node.kubernetes.io/os: linux
+    matchExpressions:
+      - key: node-role.kubernetes.io/control-plane
+        operator: DoesNotExist
+  interfaces:
+    - br0
+    - ^eth[0-9]+
+    - ^enp.*
   externalIPs: true
   loadBalancerIPs: true
 ---
