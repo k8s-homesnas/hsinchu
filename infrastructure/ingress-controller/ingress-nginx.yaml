@@ -32,8 +32,8 @@ spec:
       service:
         ipFamilyPolicy: "PreferDualStack"
         ipFamilies:
-          - IPv6
           - IPv4
+          - IPv6
         type: LoadBalancer
         annotations:
           # metallb.io/loadBalancerIPs: 192.168.1.205
