@@ -1,0 +1,41 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: cilium
+  namespace: flux-system
+spec:
+  interval: 24h
+  url: https://helm.cilium.io/
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: metallb
+  namespace: kube-system
+spec:
+  interval: 1h
+  chart:
+    spec:
+      chart: metallb
+      sourceRef:
+        kind: HelmRepository
+        name: cilium
+  values:
+    l2announcements:
+      enabled: true
+    ipv6:
+      enabled: true
+
+    # 為了 L2 宣告，必須取代 kube-proxy
+    kubeProxyReplacement: "strict"
+
+    # 建議的 operator 副本數
+    operator:
+      replicas: 1
+
+    # IP 位址管理模式
+    ipam:
+      mode: "kubernetes"
+
+    k8sServiceHost: "192.168.1.111"
+    k8sServicePort: "6443"

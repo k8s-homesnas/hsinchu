@@ -1,0 +1,21 @@
+apiVersion: metallb.io/v1beta1
+kind: L2Advertisement
+metadata:
+  name: local-ip
+spec:
+  ipAddressPools:
+    - sandbox-v4
+    - sandbox-v6
+---
+apiVersion: "cilium.io/v2alpha1"
+kind: CiliumL2AnnouncementPolicy
+metadata:
+  name: "default-l2-policy"
+  namespace: kube-system
+spec:
+  # 這個選擇器會選擇服務，Cilium 會自動處理服務上的 IPv4 和 IPv6 位址
+  nodeSelector:
+    matchLabels:
+      node.kubernetes.io/os: linux
+  externalIPs: true
+  loadBalancerIPs: true
