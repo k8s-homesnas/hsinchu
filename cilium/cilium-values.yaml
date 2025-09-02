@@ -21,6 +21,8 @@ ipam:
 # 4. 啟用 L2 LoadBalancer 功能
 l2announcements:
   enabled: true
+l2NeighDiscovery:
+  enabled: true
 
 devices: 
   - br0
