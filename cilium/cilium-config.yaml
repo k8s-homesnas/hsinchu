@@ -32,6 +32,7 @@ spec:
     # 這是您的 IPv6 位址區塊
     # 請根據您的本地 IPv6 網路環境修改此 CIDR
     - cidr: "2001:b011:700e:164d::/64"
+    - cidr: "fe80::abcd:0:0:0/80" 
 ---
 # apiVersion: metallb.io/v1beta1
 # kind: IPAddressPool

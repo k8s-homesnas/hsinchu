@@ -16,13 +16,19 @@ ipam:
     # podSubnet: 10.244.0.0/16,2001:db8:42:0::/56
     # serviceSubnet: 10.96.0.0/12,2001:db8:42:1::/112
     clusterPoolIPv4PodCIDRList: ["10.244.0.0/16"]
-    clusterPoolIPv6PodCIDRList: ["2001:db8:42:0::/112"]
+    clusterPoolIPv6PodCIDRList: ["2001:db8:42:0::/112", "fe80::abcd:0:0:0/112"]
 
 # 4. 啟用 L2 LoadBalancer 功能
 l2announcements:
   enabled: true
 l2NeighDiscovery:
   enabled: true
+
+hubble:
+  relay:
+    enabled: true
+  ui:
+    enabled: true
 
 devices: 
   - br0
