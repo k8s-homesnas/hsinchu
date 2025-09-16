@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 120m
-  url: https://cloudflare-ddns.aureum.cloud
+  url: https://charts.kubito.dev
 ---
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
