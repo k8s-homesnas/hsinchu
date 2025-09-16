@@ -6,3 +6,4 @@ resources:
 - bitwarden_helm_repo.yaml
 - infrastructure.yaml
 - minecraft.yaml
+- ddns.yaml
