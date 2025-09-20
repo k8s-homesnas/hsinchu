@@ -22,8 +22,10 @@ spec:
       - --rfc2136-host=192.168.1.111
       - --rfc2136-port=53
       - --rfc2136-zone=hsinchu.pro
+      - --rfc2136-zone=1.168.192.in-addr.arpa
       - --rfc2136-tsig-secret-alg=hmac-sha256
       - --rfc2136-tsig-axfr
+      - --rfc2136-create-ptr
 
     env:
       - name: "EXTERNAL_DNS_RFC2136_TSIG_SECRET"
@@ -37,5 +39,5 @@ spec:
             name: rfc2136-keys
             key: rfc2136-tsig-keyname
     # 限制 ExternalDNS 只管理特定網域的紀錄，避免誤操作
-    domainFilters: [ 'hsinchu.pro' ]
+    domainFilters: [ 'hsinchu.pro', '1.168.192.in-addr.arpa' ]
     policy: sync # 'sync' 會同時建立與刪除紀錄, 'upsert-only' 只會建立與更新
