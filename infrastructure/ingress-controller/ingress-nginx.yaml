@@ -22,15 +22,10 @@ spec:
         name: ingress-nginx
       # version: "1.13.0" # 指定一個穩定的版本
   values:
-    rbac:
-      scope: true
     serviceAccount:
       create: true
       name: "nginx"
     controller:
-      scope:
-        enabled: true
-        namespace: minecraft
       ingressClass: nginx  # default: nginx
       ingressClassByName: true
       ingressClassResource:
