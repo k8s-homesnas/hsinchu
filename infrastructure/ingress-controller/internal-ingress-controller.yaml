@@ -1,0 +1,42 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: ingress-nginx
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: ingress-nginx
+      sourceRef:
+        kind: HelmRepository
+        name: ingress-nginx
+        namespace: ingress-nginx
+      # version: "1.13.0" # 指定一個穩定的版本
+  values:
+    serviceAccount:
+      create: true
+      name: "Internal"
+    controller:
+      ingressClass: internal  # default: nginx
+      ingressClassResource:
+        name: internal  # default: nginx
+        enabled: true
+        default: false
+        controllerValue: "k8s.io/internal-ingress-nginx"  # default: k8s.io/ingress-nginx
+      config:
+        annotations-risk-level: Critical
+      admissionWebhooks:
+        certManager:
+          enabled: true
+      allowSnippetAnnotations: true
+      service:
+        ipFamilyPolicy: "PreferDualStack"
+        ipFamilies:
+          - IPv4
+          - IPv6
+        type: LoadBalancer
+        annotations:
+          "lbipam.cilium.io/ips": "192.168.1.222,2001:b011:700e:164d::1"
+      replicaCount: 2 # 建議至少 2 個副本以確保高可用性
+      metrics:
+        enabled: true # 啟用 Prometheus 指標

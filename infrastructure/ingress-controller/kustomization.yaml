@@ -6,3 +6,4 @@ metadata:
 resources:
   - namespace.yaml
   - ingress-nginx.yaml
+  - internal-ingress-controller.yaml
