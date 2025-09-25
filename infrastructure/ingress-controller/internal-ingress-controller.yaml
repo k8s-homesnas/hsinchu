@@ -15,7 +15,7 @@ spec:
   values:
     serviceAccount:
       create: true
-      name: "Internal"
+      name: "internal"
     controller:
       ingressClass: internal  # default: nginx
       ingressClassResource:
