@@ -1,0 +1,20 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: csi-driver-nfs
+spec:
+  interval: 24h
+  url: https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/charts
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: nfs-driver
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: nfs-driver
+      sourceRef:
+        kind: HelmRepository
+        name: csi-driver-nfs
