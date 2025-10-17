@@ -26,6 +26,12 @@ spec:
       create: true
       name: "nginx"
     controller:
+      metrics:
+        enabled: true
+        serviceMonitor:
+          enabled: true
+          additionalLabels:
+            release: kube-prometheus-stack
       ingressClass: nginx  # default: nginx
       ingressClassByName: true
       ingressClassResource:
