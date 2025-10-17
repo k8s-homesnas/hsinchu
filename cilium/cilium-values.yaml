@@ -35,12 +35,24 @@ k8sServicePort: 6443 # 預設為 6443
 # 5. prometheus 觀測
 prometheus:
   enabled: true
+  serviceMonitor:
+    enabled: true
+    labels:
+      release: "kube-prometheus-stack"
 operator:
   prometheus:
     enabled: true
+    serviceMonitor:
+      enabled: true
+    labels:
+      release: "kube-prometheus-stack"
 
 hubble:
   metrics:
+    serviceMonitor:
+      enabled: true
+      labels:
+        release: "kube-prometheus-stack"
     enabled:
       - dns
       - drop
