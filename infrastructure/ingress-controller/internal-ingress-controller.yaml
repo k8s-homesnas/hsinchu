@@ -44,5 +44,3 @@ spec:
         annotations:
           "lbipam.cilium.io/ips": "192.168.1.222,2001:b011:700e:164d::1"
       replicaCount: 2 # 建議至少 2 個副本以確保高可用性
-      metrics:
-        enabled: true # 啟用 Prometheus 指標
