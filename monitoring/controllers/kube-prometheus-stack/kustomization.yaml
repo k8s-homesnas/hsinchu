@@ -13,5 +13,8 @@ configMapGenerator:
       labels:
         app.kubernetes.io/part-of: flux
         app.kubernetes.io/component: monitoring
+  - name: additional-scrape-configs
+    files:
+      - additional-scrape-configs.yaml=extra-exporter.yaml
 configurations:
   - kustomizeconfig.yaml

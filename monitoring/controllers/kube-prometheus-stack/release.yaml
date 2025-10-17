@@ -3,6 +3,9 @@ kind: HelmRelease
 metadata:
   name: kube-prometheus-stack
 spec:
+  additionalScrapeConfigs:
+    key: prometheus-additional.yaml
+    name: additional-scrape-configs
   interval: 1h
   chartRef:
     kind: OCIRepository

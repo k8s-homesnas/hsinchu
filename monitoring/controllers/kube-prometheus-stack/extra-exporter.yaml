@@ -1,0 +1,5 @@
+- job_name: 'prometheus-postgresql-exporter'
+     # metrics_path: /metrics
+     static_configs:
+       - targets:
+          - http://hsinchu.hsinchu.pro:9187
