@@ -3,9 +3,6 @@ kind: HelmRelease
 metadata:
   name: kube-prometheus-stack
 spec:
-  additionalScrapeConfigs:
-    key: prometheus-additional.yaml
-    name: additional-scrape-configs
   interval: 1h
   chartRef:
     kind: OCIRepository
@@ -31,6 +28,11 @@ spec:
       enabled: false
     prometheus:
       prometheusSpec:
+        additionalScrapeConfigs:
+          - job_name: 'prometheus-postgresql-exporter'
+            static_configs:
+              - targets:
+                - http://hsinchu.hsinchu.pro:9187
         retention: 24h
         resources:
           requests:
