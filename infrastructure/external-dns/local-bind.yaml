@@ -27,6 +27,11 @@ spec:
       - --rfc2136-tsig-axfr
       - --rfc2136-create-ptr
 
+    serviceMonitor:
+      enabled: true
+      additionalLabels:
+        release: "kube-prometheus-stack"
+
     env:
       - name: "EXTERNAL_DNS_RFC2136_TSIG_SECRET"
         valueFrom:

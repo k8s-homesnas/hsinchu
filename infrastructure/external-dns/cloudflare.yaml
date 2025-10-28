@@ -23,6 +23,12 @@ spec:
       proxied: true
     extraArgs:
       - --cloudflare-proxied
+
+    serviceMonitor:
+      enabled: true
+      additionalLabels:
+        release: "kube-prometheus-stack"
+
     # 使用與 cert-manager 相同的 secret
     env:
       - name: CF_API_TOKEN
