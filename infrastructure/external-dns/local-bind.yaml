@@ -28,8 +28,8 @@ spec:
       - --rfc2136-create-ptr
       - --source=gateway-httproute
       - --source=gateway-tlsroute
-      - --source=gateway-tcproute
-      - --source=gateway-udproute
+      # - --source=gateway-tcproute
+      # - --source=gateway-udproute
 
     serviceMonitor:
       enabled: true
