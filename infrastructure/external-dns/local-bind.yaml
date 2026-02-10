@@ -26,6 +26,10 @@ spec:
       - --rfc2136-tsig-secret-alg=hmac-sha256
       - --rfc2136-tsig-axfr
       - --rfc2136-create-ptr
+      - --source=gateway-httproute
+      - --source=gateway-tlsroute
+      - --source=gateway-tcproute
+      - --source=gateway-udproute
 
     serviceMonitor:
       enabled: true
@@ -46,3 +50,9 @@ spec:
     # 限制 ExternalDNS 只管理特定網域的紀錄，避免誤操作
     domainFilters: [ 'hsinchu.pro', '1.168.192.in-addr.arpa' ]
     policy: sync # 'sync' 會同時建立與刪除紀錄, 'upsert-only' 只會建立與更新
+
+rbac:
+  additionalPermissions:
+    - apiGroups: ["gateway.networking.k8s.io"]
+      resources: ["gateways","httproutes","tlsroutes","tcproutes","udproutes"] 
+      verbs: ["get","watch","list"]

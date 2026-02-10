@@ -23,6 +23,10 @@ spec:
       proxied: true
     extraArgs:
       - --cloudflare-proxied
+      - --source=gateway-httproute
+      - --source=gateway-tlsroute
+      - --source=gateway-tcproute
+      - --source=gateway-udproute
 
     serviceMonitor:
       enabled: true
@@ -44,3 +48,9 @@ spec:
     # 限制 ExternalDNS 只管理特定網域的紀錄，避免誤操作
     domainFilters: [ 'homesnas.com' ]
     policy: sync # 'sync' 會同時建立與刪除紀錄, 'upsert-only' 只會建立與更新
+
+rbac:
+  additionalPermissions:
+    - apiGroups: ["gateway.networking.k8s.io"]
+      resources: ["gateways","httproutes","tlsroutes","tcproutes","udproutes"] 
+      verbs: ["get","watch","list"]
