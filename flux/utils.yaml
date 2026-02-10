@@ -1,0 +1,26 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: utils
+  namespace: flux-system
+spec:
+  interval: 10m
+  url: https://github.com/k8s-homesnas/Utils.git
+  secretRef:
+    name: flux-system
+  ref:
+    branch: main
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: authentik-kustomize
+  namespace: flux-system
+spec:
+  interval: 10m
+  path: ./authentik
+  prune: true
+  force: false
+  sourceRef:
+    kind: GitRepository
+    name: utils
