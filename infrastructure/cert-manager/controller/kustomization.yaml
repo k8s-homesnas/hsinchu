@@ -6,3 +6,4 @@ metadata:
 resources:
   - namespace.yaml
   - cert-manager.yaml
+  - config.yaml

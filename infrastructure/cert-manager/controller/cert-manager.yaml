@@ -26,7 +26,3 @@ spec:
     extraArgs:
       - --dns01-recursive-nameservers-only
       - --dns01-recursive-nameservers=1.1.1.1:53,8.8.8.8:53
-    config:
-      apiVersion: "controller.config.cert-manager.io/v1alpha1"
-      kind: ControllerConfiguration
-      enableGateWayAPI: true
