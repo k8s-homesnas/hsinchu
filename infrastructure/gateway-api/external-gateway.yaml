@@ -4,6 +4,7 @@ metadata:
   name: external-gateway
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-cloudflare
+    external-dns.alpha.kubernetes.io/target: "hsinchu-k8s.homesnas.com"
 spec:
   gatewayClassName: cilium
   addresses:
