@@ -1,0 +1,27 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: internal-gateway
+  annotations:
+    cert-manager.io/cluster-issuer: selfsigned-cluster-issuer
+spec:
+  gatewayClassName: cilium
+  addresses:
+    - type: IPAddress
+      value: "192.168.1.213"
+  listeners:
+    - name: http
+      protocol: HTTP
+      port: 80
+    - name: https
+      protocol: TLS
+      port: 443
+      hostname: "*.hsinchu.pro"
+      tls:
+        mode: Terminate
+      allowedRoutes:
+        namespaces:
+          from: All
+        certificateRefs:
+          - name: "internal-gateway-certificates"
+            kind: Secret
