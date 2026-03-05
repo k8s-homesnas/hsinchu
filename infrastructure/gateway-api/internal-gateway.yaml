@@ -11,10 +11,10 @@ spec:
       value: "192.168.1.213"
   listeners:
     - name: http
-      protocol: HTTPS
+      protocol: HTTP
       port: 80
     - name: https
-      protocol: HTTP
+      protocol: HTTPS
       port: 443
       hostname: "*.hsinchu.pro"
       tls:
