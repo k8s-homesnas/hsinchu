@@ -19,9 +19,9 @@ spec:
       hostname: "*.hsinchu.pro"
       tls:
         mode: Terminate
-      allowedRoutes:
-        namespaces:
-          from: All
         certificateRefs:
           - name: "internal-gateway-certificates"
             kind: Secret
+      allowedRoutes:
+        namespaces:
+          from: All

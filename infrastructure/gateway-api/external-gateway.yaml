@@ -19,9 +19,9 @@ spec:
       hostname: "*.homesnas.com"
       tls:
         mode: Terminate
-      allowedRoutes:
-        namespaces:
-          from: All
         certificateRefs:
           - name: "homesnas-com-gateway-certificates"
             kind: Secret
+      allowedRoutes:
+        namespaces:
+          from: All
