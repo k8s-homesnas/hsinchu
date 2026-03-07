@@ -6,6 +6,8 @@ ipv6:
 
 # 2. 取代 kube-proxy
 kubeProxyReplacement: true
+hostFirewall:
+  enabled: true
 
 # 3. 由 Cilium 管理 Pod CIDR (IPAM)
 # 模式設定為 cluster-pool
@@ -66,3 +68,17 @@ hubble:
   ui:
     enabled: true
 
+gatewayAPI:
+  enabled: true
+loadBalancer:
+  l7:
+    backend: envoy
+
+envoy:
+  enabled: true
+envoyConfig:
+  enabled: true
+
+encryption:
+  enabled: true
+  type: wireguard
