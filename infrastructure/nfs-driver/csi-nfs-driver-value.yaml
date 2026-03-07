@@ -3,9 +3,6 @@ controller:
   replicas: 2
   strategyType: RollingUpdate
 
-storageClass:
-  create: true
-
 storageClasses:
   - name: nfs-normal
     annotations:
