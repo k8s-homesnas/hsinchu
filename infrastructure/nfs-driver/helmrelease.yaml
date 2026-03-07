@@ -14,7 +14,10 @@ spec:
   interval: 5m
   chart:
     spec:
-      chart: nfs-driver
+      chart: csi-driver-nfs
       sourceRef:
         kind: HelmRepository
         name: csi-driver-nfs
+  valueFrom:
+    - kind: ConfigMap
+      name: csi-nfs-driver-config

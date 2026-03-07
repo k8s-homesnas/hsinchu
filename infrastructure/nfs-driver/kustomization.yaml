@@ -1,7 +1,13 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: flux-system
+namespace: kube-system
+generatorOptions:
+  disableNameSuffixHash: true
 metadata:
   name: ingress-controller
 resources:
   - helmrelease.yaml
+configMapGenerator:
+  - name: csi-nfs-driver-config
+    files:
+      - values.yaml=csi-nfs-driver-value.yaml

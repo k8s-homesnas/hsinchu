@@ -1,0 +1,30 @@
+controller:
+  runOnControlPlane: true
+  replicas: 2
+  strategyType: RollingUpdate
+
+storageClass:
+  create: true
+
+storageClasses:
+  - name: nfs-normal
+    annotations:
+      storageclass.kubernetes.io/is-default-class: "true"
+    parameters:
+      server: 13700k.hsinchu.pro
+      share: /var/db/k8s-volumes/
+      subDir: ${pvc.metadata.namespace}-${pvc.metadata.name}-${pv.metadata.name}
+    reclaimPolicy: Delete
+    volumeBindingMode: Immediate
+    mountOptions:
+      - nfsvers=4.1
+  - name: nfs-fast
+    parameters:
+      server: 13700k.hsinchu.pro
+      share: /var/db/k8s-volume-ssd/
+    reclaimPolicy: Delete
+    volumeBindingMode: Immediate
+    mountOptions:
+      - nfsvers=4.1
+
+
