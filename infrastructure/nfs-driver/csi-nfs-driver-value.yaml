@@ -1,6 +1,6 @@
 controller:
   runOnControlPlane: true
-  replicas: 2
+  replicas: 1
   strategyType: RollingUpdate
 
 storageClasses:
