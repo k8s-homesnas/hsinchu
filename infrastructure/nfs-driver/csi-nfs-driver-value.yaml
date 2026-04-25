@@ -19,7 +19,7 @@ storageClasses:
     parameters:
       server: 13700k.hsinchu.pro
       share: /var/db/k8s-volume-ssd/
-    reclaimPolicy: Delete
+    reclaimPolicy: Retain
     volumeBindingMode: Immediate
     mountOptions:
       - nfsvers=4.1
