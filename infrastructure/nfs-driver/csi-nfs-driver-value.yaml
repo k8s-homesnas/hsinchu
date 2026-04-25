@@ -11,7 +11,7 @@ storageClasses:
       server: 13700k.hsinchu.pro
       share: /var/db/k8s-volumes/
       subDir: ${pvc.metadata.namespace}-${pvc.metadata.name}-${pv.metadata.name}
-    reclaimPolicy: Delete
+    reclaimPolicy: Retain
     volumeBindingMode: Immediate
     mountOptions:
       - nfsvers=4.1
