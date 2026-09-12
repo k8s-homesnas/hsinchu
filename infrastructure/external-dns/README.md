@@ -12,7 +12,7 @@
     *   **服務 (Services)**：特別是 `LoadBalancer` 類型的服務，`External-DNS` 會讀取其外部 IP 位址。對於 `NodePort` 類型的服務，它可以設定為將節點的 IP 作為 DNS 記錄。
     *   **Ingress**：`External-DNS` 會從 Ingress 資源中取得主機名稱 (hostname) 和負載平衡器的 IP 位址。
 
-2.  **讀取註解 (Annotations)**：開發者可以透過在 Service 或 Ingress 資源上添加特定的註解，來告知 `External-DNS` 應該為該資源建立什麼樣的 DNS 記錄。最核心的註解是 `external-dns.alpha.kubernetes.io/hostname`，用以指定所需的域名。
+2.  **讀取註解 (Annotations)**：開發者可以透過在 Service 或 Ingress 資源上添加特定的註解，來告知 `External-DNS` 應該為該資源建立什麼樣的 DNS 記錄。最核心的註解是 `external-dns.kubernetes.io/hostname`，用以指定所需的域名。
 
 3.  **與 DNS 服務商同步**：`External-DNS` 支援多家主流的 DNS 服務商，例如 AWS Route 53、Google Cloud DNS、Azure DNS、Cloudflare 以及其他自架的 DNS 服務 (如 CoreDNS、BIND)。它會使用預先配置好的憑證，透過各家服務商提供的 API 來進行 DNS 記錄的同步操作。
 
@@ -38,7 +38,7 @@ kind: Service
 metadata:
   name: my-service
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: my-app.example.com.
+    external-dns.kubernetes.io/hostname: my-app.example.com.
 spec:
   type: LoadBalancer
   ports:
