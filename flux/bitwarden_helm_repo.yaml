@@ -4,7 +4,7 @@ metadata:
   name: vaultwarden-helm-repo
   namespace: flux-system
 spec:
-  interval: 1m
+  interval: 30m
   url: https://gissilabs.github.io/charts/
 ---
 apiVersion: source.toolkit.fluxcd.io/v1
@@ -13,7 +13,7 @@ metadata:
   name: vaultwarden-release
   namespace: flux-system
 spec:
-  interval: 1m
+  interval: 30m
   url: https://github.com/k8s-homesnas/vaultwarden.git
   secretRef:
     name: flux-system
@@ -26,7 +26,7 @@ metadata:
   name: vaultwarden-kustomize
   namespace: flux-system
 spec:
-  interval: 1m
+  interval: 30m
   path: ./
   prune: true
   force: false
