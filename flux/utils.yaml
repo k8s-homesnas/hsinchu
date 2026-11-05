@@ -66,3 +66,17 @@ spec:
   sourceRef:
     kind: GitRepository
     name: utils
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: owncloud-kustomize
+  namespace: flux-system
+spec:
+  interval: 60m
+  path: ./owncloud
+  prune: true
+  force: false
+  sourceRef:
+    kind: GitRepository
+    name: utils
