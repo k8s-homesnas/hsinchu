@@ -4,14 +4,14 @@ agent:
   # Specify each pod whose logs you want to process
   acquisition:
     # The namespace where the pod is located
-    - namespace: vaultwarden
+    - namespace: bitwarden
       # The pod name
       podName: vaultwarden-*
       # as in crowdsec configuration, we need to specify the program name to find a matching parser
-      program: vaultwarden
+      program: VAULTWARDEN
     - namespace: authentik
       # The pod name
-      podName: authentik-*
+      podName: authentik-server-*
       # as in crowdsec configuration, we need to specify the program name to find a matching parser
       program: authentik
     - namespace: gitea
