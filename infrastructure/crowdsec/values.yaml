@@ -1,0 +1,74 @@
+# for raw logs format: json or cri (docker|containerd)
+container_runtime: containerd
+agent:
+  # Specify each pod whose logs you want to process
+  acquisition:
+    # The namespace where the pod is located
+    - namespace: vaultwarden
+      # The pod name
+      podName: vaultwarden-*
+      # as in crowdsec configuration, we need to specify the program name to find a matching parser
+      program: vaultwarden
+    - namespace: authentik
+      # The pod name
+      podName: authentik-*
+      # as in crowdsec configuration, we need to specify the program name to find a matching parser
+      program: authentik
+    - namespace: gitea
+      # The pod name
+      podName: gitea-*
+      # as in crowdsec configuration, we need to specify the program name to find a matching parser
+      program: gitea
+  env:
+    - name: COLLECTIONS
+      value: "firix/authentik Dominic-Wagner/vaultwarden LePresidente/gitea"
+lapi:
+  env:
+    # To enroll the Security Engine to the console
+    - name: ENROLL_INSTANCE_NAME
+      value: "my-k8s-cluster"
+    - name: ENROLL_TAGS
+      value: "k8s linux test"
+    - name: ENROLL_KEY
+      valueFrom:
+        secretKeyRef:
+          name: crowdsec-keys
+          key: ENROLL_KEY
+    - name: DB_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: database-secret
+          key: DB_PASSWORD
+appsec:
+  enabled: true
+
+## config.yaml.local is the configuration file used by the Security Engine itself
+config:
+  config.yaml.local: |
+    api:
+      client:
+        # the log processor will unregister itself from LAPI when stopping.    
+        unregister_on_exit: true
+      server:
+        # This is needed for agent autoregistration
+        auto_registration: # Activate if not using TLS for authentication
+          enabled: true
+          token: "${REGISTRATION_TOKEN}" # /!\ Do not modify this variable (auto-generated and handled by the chart)
+          allowed_ranges: # /!\ Make sure to adapt to the pod IP ranges used by your cluster
+            - "127.0.0.1/32"
+            - "192.168.0.0/16"
+            - "10.0.0.0/8"
+            - "172.16.0.0/12"
+    # Using a database is strongly encouraged.
+    db_config:
+      type: postgresql
+      user: crowdsec
+      password: ${DB_PASSWORD}
+      db_name: crowdsec
+      host: 192.168.1.111:5432
+      flush:
+        bouncers_autodelete:
+          api_key: 1h
+        agents_autodelete:
+          login_password: 6h
+          cert: 6h
