@@ -41,6 +41,25 @@ lapi:
           key: DB_PASSWORD
 appsec:
   enabled: true
+  acquisitions:
+    # Defines how AppSec receives HTTP security events
+    - appsec_config: crowdsecurity/appsec-default # Default AppSec engine configuration
+      labels:
+        type: appsec # Label used internally to identify AppSec events
+      listen_addr: 0.0.0.0:7422 # Address/port where AppSec listens for events
+      path: / # URL path to inspect
+      source: appsec # Marks events as coming from AppSec
+
+  env:
+    # AppSec-specific rule sets (virtual patching + generic protections)
+    - name: COLLECTIONS
+      value: crowdsecurity/appsec-virtual-patching crowdsecurity/appsec-generic-rules
+
+persistentVolume:
+  data:
+    enabled: false
+  config:
+    enabled: false
 
 ## config.yaml.local is the configuration file used by the Security Engine itself
 config:
