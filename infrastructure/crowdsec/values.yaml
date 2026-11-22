@@ -65,7 +65,8 @@ config:
       user: crowdsec
       password: ${DB_PASSWORD}
       db_name: crowdsec
-      host: 192.168.1.111:5432
+      host: 192.168.1.111
+      port: 5432
       flush:
         bouncers_autodelete:
           api_key: 1h
