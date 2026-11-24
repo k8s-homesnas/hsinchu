@@ -23,6 +23,14 @@ agent:
     - name: COLLECTIONS
       value: "firix/authentik Dominic-Wagner/vaultwarden LePresidente/gitea"
 lapi:
+  metrics:
+    serviceMonitor:
+      additionalLabels:
+        release: "kube-prometheus-stack"
+    podMonitor:
+      enabled: true
+      additionalLabels:
+        release: "kube-prometheus-stack"
   env:
     # To enroll the Security Engine to the console
     - name: ENROLL_INSTANCE_NAME
